@@ -1,7 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 1. Run the following code on your Arduino:
     <%= knocker.ino =%>
 
+=======
+1.  Run the following code on your Arduino: 
+    <%= secret_door_knocker.ino =%>
+>>>>>>> FETCH_HEAD
 =======
 1.  Run the following code on your Arduino: 
     <%= secret_door_knocker.ino =%>
