@@ -34,7 +34,6 @@ const int lockTurnTime = 650;      // milliseconds that we run the motor to get 
 const int maximumKnocks = 20;       // Maximum number of knocks to listen for.
 const int knockComplete = 1200;     // Longest time to wait for a knock before we assume that it's finished.
 
-
 // Variables.
 int secretCode[maximumKnocks] = {50, 25, 25, 50, 100, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};  // Initial setup: "Shave and a Hair Cut, two bits."
 int knockReadings[maximumKnocks];   // When someone knocks this array fills with delays between knocks.
