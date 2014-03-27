@@ -1,4 +1,5 @@
-1. Run the following code on your Arduino: <%= knocker.ino =%>
+1. Run the following code on your Arduino:
+    <%= knocker.ino =%>
 
 2. While pressing the button, tap out a pattern onto the piezo. This records your secret knock.
 
