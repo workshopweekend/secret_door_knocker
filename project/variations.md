@@ -1,0 +1,1 @@
++ Use a speaker to play a happy tune when a knock is successfully recognized.
