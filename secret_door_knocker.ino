@@ -30,6 +30,7 @@ const int rejectValue = 25;        // If an individual knock is off by this perc
 const int averageRejectValue = 15; // If the average timing of the knocks is off by this percent we don't unlock.
 const int knockFadeTime = 150;     // milliseconds we allow a knock to fade before we listen for another one. (Debounce timer.)
 const int lockTurnTime = 650;      // milliseconds that we run the motor to get it to go a half turn.
+const int unlockTime = 5000;       // milliseconds that the door remains unlocked.
 
 const int maximumKnocks = 20;       // Maximum number of knocks to listen for.
 const int knockComplete = 1200;     // Longest time to wait for a knock before we assume that it's finished.
@@ -157,46 +158,19 @@ void listenToSecretKnock() {
 // Runs the motor (or whatever) to unlock the door.
 void triggerDoorUnlock() {
   Serial.println("Door unlocked!");
-  int i = 0;
-
-  /*
-  // turn the motor on for a bit.
-  digitalWrite(lockMotor, HIGH);
-  digitalWrite(greenLED, HIGH);            // And the green LED too.
-  delay (lockTurnTime);                    // Wait a bit.
-  digitalWrite(lockMotor, LOW);            // Turn the motor off.
-  */
-
-  // Rotate the servo into the unlocked position for a few moments, then lock it again
-  for (int i = 0; i <= 10; i = i + 1)
-  {
-    myservo.write(0);
-    delay (100);
-  }
-
-  delay (lockTurnTime);
-
-  for (int i = 0; i <= 10; i = i + 1)
-  {
-    myservo.write(179);
-    delay (100);
-  }
-
-  for (int pos = 0; pos <= 180; pos += 1) // goes from 0 degrees to 180 degrees
-  { // in steps of 1 degree
-    myservo.write(100);              // tell servo to go to position in variable 'pos'
-    delay(15);                       // waits 15ms for the servo to reach the position
-  }
-  for (int pos = 180; pos >= 0; pos -= 1) // goes from 180 degrees to 0 degrees
-  {
-    myservo.write(50);
-
-    //    myservo.write(pos);              // tell servo to go to position in variable 'pos'
-    delay(15);                       // waits 15ms for the servo to reach the position
-  }
+  
+  // unlock the door!
+  myservo.write(0);
+  
+  delay(lockTurnTime);
+  delay(unlockTime);
+  
+  // lock the door again!
+  myservo.write(180);
+  
 
   // Blink the green LED a few times for more visual feedback.
-  for (i = 0; i < 5; i++) {
+  for (int i = 0; i < 5; i++) {
     digitalWrite(greenLED, LOW);
     delay(100);
     digitalWrite(greenLED, HIGH);
