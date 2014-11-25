@@ -167,7 +167,6 @@ void triggerDoorUnlock() {
   
   // lock the door again!
   myservo.write(180);
-  
 
   // Blink the green LED a few times for more visual feedback.
   for (int i = 0; i < 5; i++) {
